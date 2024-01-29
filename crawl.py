@@ -3,6 +3,7 @@ from typing import List
 
 import requests
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 
 
 def find_pages(index_url: str ="https://docs.racket-lang.org/reference/") -> List[str]:
@@ -28,7 +29,8 @@ def fetch_urls(urls: List[str], directory: str, replace: bool = True) -> None:
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-    for url in urls:
+    
+    for url in tqdm(urls, desc="Fetching documentation"):
         name = url.split('/')[-1]
         path = f"{directory}/{name}"
         if not replace and os.path.exists(path):
@@ -36,8 +38,4 @@ def fetch_urls(urls: List[str], directory: str, replace: bool = True) -> None:
         response = requests.get(url, timeout=5)
         with open(path, "w") as file:
             file.write(response.text)
-
-if __name__ == "__main__":
-    pages = find_pages()
-    fetch_urls(pages, directory='temp/')
 
