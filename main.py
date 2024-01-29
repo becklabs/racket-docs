@@ -1,19 +1,17 @@
-from parse import get_entries
-from crawl import find_pages, fetch_urls
+import chromadb
 
-import os
+CHROMA_PERSIST_DIR = 'chromadb/'
+CHROMA_COLLECTION = 'racket'
+k = 1
 
-pages = find_pages()
 
-temp_dir = 'temp/'
-fetch_urls(pages, directory=temp_dir, replace=False)
+client = chromadb.PersistentClient(path=CHROMA_PERSIST_DIR)
+collection = client.get_or_create_collection(name = CHROMA_COLLECTION)
 
-entries = []
-for file in os.listdir(temp_dir):
-    with open(os.path.join(temp_dir, file), 'r') as f:
-        html = f.read()
-        entries.extend(get_entries(html))
-
-for entry in entries:
-    print(entry)
-    break
+while True:
+    query = input(": ")
+    response = collection.query(query_texts=[query], n_results=k)
+    docs = response['documents'][0]
+    for doc in docs:
+        print(doc)
+        print('---------------------------')

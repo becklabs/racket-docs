@@ -1,4 +1,4 @@
-langchain
 lxml
 beautifulsoup4
 tqdm
+chromadb
