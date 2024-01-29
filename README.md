@@ -13,3 +13,11 @@ python3 build_index.py
 #### Usage
 
 Run `main.py` to access the embeddings index via a simple CLI interface.
+
+```
+> How do I get the first element in a list?
+procedure(first lst) → any/c  lst : list?The same as (car lst), but only for lists (that are not empty).
+Example:> (first '(1 2 3 4 5 6 7 8 9 10))1
+------------------------------
+> 
+```
