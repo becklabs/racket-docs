@@ -14,7 +14,7 @@ python3 build_index.py
 
 #### Usage
 
-Run `main.py` to access the embeddings index via a simple CLI interface.
+Run `main.py --n-results 1` to access the embeddings index via a simple CLI interface.
 Use `-r` or `--rag` to run with retrieval-augmented generation.
 
 ```
