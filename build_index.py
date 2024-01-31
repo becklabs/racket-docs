@@ -6,8 +6,8 @@ import chromadb
 from crawl import fetch_urls, find_pages
 from parse import get_entries
 
-TEMP_DIR = 'temp2/'
-CHROMA_PERSIST_DIR = 'chromadb2/'
+TEMP_DIR = 'temp/'
+CHROMA_PERSIST_DIR = 'chromadb/'
 CHROMA_COLLECTION = 'racket'
 
 pages = find_pages()
