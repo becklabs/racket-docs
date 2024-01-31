@@ -10,9 +10,12 @@ pip3 install -r requirements.txt
 python3 build_index.py
 ```
 
+3. If using RAG, download [ollama](https://ollama.ai/download/)
+
 #### Usage
 
 Run `main.py --n-results 1` to access the embeddings index via a simple CLI interface.
+Use `-r` or `--rag` to run with retrieval-augmented generation.
 
 ```
 > How do I get the first element in a list?
