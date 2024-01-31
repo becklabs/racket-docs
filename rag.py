@@ -1,12 +1,12 @@
 import ollama
-from chromadb import QueryResult
+from typing import List
 
-def rag(prompt: str, result: QueryResult, model='codellama:7b'):
+def rag(prompt: str, docs: List[str], model='codellama:7b'):
     get_model(model)
 
     context = [{ 'role': 'system', 'content': 'You are a code assistant designed to answer questions about the Racket programming language. \
                 Use the context from the Racket docs provided to answer the prompt.'}]
-    [context.append({ 'role': 'assistant', 'content': str(document)}) for document in result['documents']]
+    [context.append({ 'role': 'assistant', 'content': str(document)}) for document in docs]
     
     context.append({ 'role': 'user', 'content': prompt})  
 
